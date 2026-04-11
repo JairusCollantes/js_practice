@@ -39,3 +39,57 @@ input.addEventListener("input", () => {
 });
 
 startGame();
+
+let expression = "";
+
+const display = document.getElementById("display");
+const container = document.getElementById("buttons");
+
+const buttonsData = [
+  "7","8","9","+","C",
+  "4","5","6","-","←",
+  "1","2","3","/","^",
+  ".","0","=","x"
+];
+
+// create buttons
+buttonsData.forEach(value => {
+  const btn = document.createElement("button");
+  btn.textContent = value;
+
+  btn.addEventListener("click", () => handleClick(value));
+
+  container.appendChild(btn);
+});
+
+function handleClick(value) {
+  if (value === "C") {
+    expression = "";
+    display.textContent = "0";
+
+  } else if (value === "←") {
+    expression = expression.slice(0, -1);
+    display.textContent = expression || "0";
+
+  } else if (value === "=") {
+    try {
+      let safe = expression
+        .replace(/x/g, "*")
+        .replace(/\^/g, "**");
+
+      let result = eval(safe);
+      result = Math.round(result * 100000) / 100000;
+
+      display.textContent = result;
+      expression = result.toString();
+
+    } catch {
+      display.textContent = "Error";
+      expression = "";
+    }
+
+  } else {
+    expression += value;
+    display.textContent = expression;
+  }
+}
