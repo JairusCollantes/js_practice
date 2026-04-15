@@ -52,7 +52,7 @@ const buttonsData = [
   ".","0","=","x"
 ];
 
-// create buttons
+
 buttonsData.forEach(value => {
   const btn = document.createElement("button");
   btn.textContent = value;
