@@ -46,13 +46,11 @@ const display = document.getElementById("display");
 const container = document.getElementById("buttons");
 
 const buttonsData = [
-  "7","8","9","+","C",
-  "4","5","6","-","←",
-  "1","2","3","/","^",
-  ".","0","=","x"
+  "7", "8", "9", "+", "C",
+  "4", "5", "6", "-", "←",
+  "1", "2", "3", "/", "^",
+  ".", "0", "=", "x"
 ];
-
-
 
 buttonsData.forEach(value => {
   const btn = document.createElement("button");
@@ -62,7 +60,7 @@ buttonsData.forEach(value => {
 
   container.appendChild(btn);
 });
-
+// malpractice
 function handleClick(value) {
   if (value === "C") {
     expression = "";
